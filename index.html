@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Otherworld Atlas | Moon & Mars Explorer</title>
+
+  <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="logo">✳</span>
+      <span>OTHERWORLD <b>ATLAS</b>
+        <small>PLANETARY ANALOG EXPLORER</small>
+      </span>
+    </a>
+
+    <div class="modes">
+      <button id="moonBtn" class="mode active">☾ MOON MODE</button>
+      <button id="marsBtn" class="mode">♂ MARS MODE</button>
+    </div>
+
+    <div class="status"><span></span> INTERACTIVE FIELD MAP</div>
+  </header>
+
+  <main>
+    <aside class="sidebar">
+      <div class="heading">
+        <div>
+          <small class="eyebrow">MISSION CONFIGURATION</small>
+          <h1 id="modeTitle">Moon analogs</h1>
+        </div>
+        <span id="planetIcon" class="planet">☾</span>
+      </div>
+
+      <p id="modeDescription" class="muted">
+        Find Earth environments with conditions similar to the Moon.
+      </p>
+
+      <div class="section-heading">
+        ENVIRONMENTAL FILTERS
+        <button id="resetBtn" class="link-btn">RESET</button>
+      </div>
+      <p class="hint">
+        Activate multiple filters to find locations matching
+        several conditions at once.
+      </p>
+
+      <div id="filters"></div>
+
+      <div class="section-heading layers-heading">MAP LAYERS</div>
+
+      <label class="layer">
+        <span><i class="dot terrain"></i> Terrain analogs</span>
+        <input type="checkbox" id="terrainToggle" checked>
+      </label>
+
+      <label class="layer">
+        <span><i class="dot climate"></i> Climate reference sites</span>
+        <input type="checkbox" id="climateToggle" checked>
+      </label>
+
+      <div class="match-box">
+        <div class="match-heading">
+          MATCHING LOCATIONS
+          <strong id="siteCount">12</strong>
+        </div>
+        <div class="progress"><div id="progressBar"></div></div>
+        <p id="matchSummary">Loading locations...</p>
+      </div>
+
+      <p class="disclaimer">
+        PROTOTYPE DATA. Environmental values and match scores are
+        illustrative and must not be treated as validated scientific
+        measurements.
+      </p>
+    </aside>
+
+    <section class="map-panel">
+      <div class="map-toolbar">
+        <div class="map-title">
+          <small class="eyebrow">PLANETARY ANALOG NETWORK</small>
+          <strong>EARTH / SURFACE COMPARISON</strong>
+        </div>
+
+        <div class="map-buttons">
+          <button id="showAllBtn">◎ SHOW ALL</button>
+          <button id="zoomOutBtn" aria-label="Zoom out">−</button>
+          <button id="zoomInBtn" aria-label="Zoom in">+</button>
+        </div>
+      </div>
+
+      <div id="map"></div>
+
+      <div class="coordinates" id="coordinates">
+        LAT 00.000° · LON 00.000°
+      </div>
+
+      <div class="legend">
+        <span><i class="legend-dot green"></i> Strong match</span>
+        <span><i class="legend-dot yellow"></i> Partial match</span>
+        <span><i class="legend-dot grey"></i> Low match</span>
+      </div>
+
+      <article id="siteCard" class="site-card hidden">
+        <button id="closeCard" class="close-btn" aria-label="Close">×</button>
+        <small id="siteType" class="eyebrow">ANALOG SITE</small>
+        <h2 id="siteName">Location</h2>
+        <p id="siteLocation" class="muted"></p>
+
+        <div class="score-heading">
+          CONDITION MATCH <strong id="siteScore">--%</strong>
+        </div>
+        <div class="progress"><div id="siteProgress"></div></div>
+
+        <p id="siteDescription" class="description"></p>
+        <div id="siteMetrics" class="metrics"></div>
+
+        <p class="card-footer">ILLUSTRATIVE SITE PROFILE</p>
+      </article>
+
+      <div class="map-tip">ⓘ Click a highlighted site to explore it.</div>
+    </section>
+  </main>
+
+  <footer>
+    <span>OTHERWORLD ATLAS</span>
+    <span>Earth environments · Off-world exploration</span>
+    <span>© OpenStreetMap contributors</span>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
